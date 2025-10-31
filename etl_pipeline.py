@@ -40,6 +40,7 @@ df_final = df_transformed.select("customer_id", "full_name", "country", "order_t
 
 df_final.write \
     .option("header", True) \
+    .mode("overwrite") \
     .parquet("Output/processed_orders")
 
 
