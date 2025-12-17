@@ -17,7 +17,6 @@ orders_df = spark.read \
     .option("inferSchema", True) \
     .csv("Data/orders.csv")
 
-
 customers_df.printSchema()
 orders_df.printSchema()
 
@@ -41,7 +40,9 @@ df_final = df_transformed.select("customer_id", "full_name", "country", "order_t
 df_final.write \
     .option("header", True) \
     .mode("overwrite") \
-    .parquet("Output/processed_orders")
+    .csv("Output/processed_orders")
+    # .parquet("Output/processed_orders")
+
 
 
 df_final.show()
